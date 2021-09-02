@@ -1,0 +1,14 @@
+See end of file for license information.	stb_rect_pack/stb_rect_pack.html#see-end-of-file-for-license-informationdot	 See end of file for license information.	
+STB_RECT_PACK_VERSION	stb_rect_pack/stb_rect_pack.html#STB_RECT_PACK_VERSION	stb_rect_pack: STB_RECT_PACK_VERSION	
+stbrp_coord	stb_rect_pack/stb_rect_pack.html#stbrp_coord	stb_rect_pack: stbrp_coord	
+STBRP_MAXVAL	stb_rect_pack/stb_rect_pack.html#STBRP_MAXVAL	stb_rect_pack: STBRP_MAXVAL	
+stbrp_node	stb_rect_pack/stb_rect_pack.html#stbrp_node	stb_rect_pack: stbrp_node	
+stbrp_context	stb_rect_pack/stb_rect_pack.html#stbrp_context	stb_rect_pack: stbrp_context	
+stbrp_rect	stb_rect_pack/stb_rect_pack.html#stbrp_rect	stb_rect_pack: stbrp_rect	
+stbrp_pack_rects	stb_rect_pack/stb_rect_pack.html#stbrp_pack_rects,ptr.stbrp_context,ptr.stbrp_rect,cint	stb_rect_pack: stbrp_pack_rects(context: ptr stbrp_context; rects: ptr stbrp_rect;\n                 num_rects: cint): cint	
+stbrp_init_target	stb_rect_pack/stb_rect_pack.html#stbrp_init_target,ptr.stbrp_context,cint,cint,ptr.stbrp_node,cint	stb_rect_pack: stbrp_init_target(context: ptr stbrp_context; width: cint; height: cint;\n                  nodes: ptr stbrp_node; num_nodes: cint)	
+stbrp_setup_allow_out_of_mem	stb_rect_pack/stb_rect_pack.html#stbrp_setup_allow_out_of_mem,ptr.stbrp_context,cint	stb_rect_pack: stbrp_setup_allow_out_of_mem(context: ptr stbrp_context; allow_out_of_mem: cint)	
+stbrp_setup_heuristic	stb_rect_pack/stb_rect_pack.html#stbrp_setup_heuristic,ptr.stbrp_context,cint	stb_rect_pack: stbrp_setup_heuristic(context: ptr stbrp_context; heuristic: cint)	
+STBRP_HEURISTIC_Skyline_default	stb_rect_pack/stb_rect_pack.html#STBRP_HEURISTIC_Skyline_default	stb_rect_pack: STBRP_HEURISTIC_Skyline_default	
+STBRP_HEURISTIC_Skyline_BL_sortHeight	stb_rect_pack/stb_rect_pack.html#STBRP_HEURISTIC_Skyline_BL_sortHeight	stb_rect_pack: STBRP_HEURISTIC_Skyline_BL_sortHeight	
+STBRP_HEURISTIC_Skyline_BF_sortHeight	stb_rect_pack/stb_rect_pack.html#STBRP_HEURISTIC_Skyline_BF_sortHeight	stb_rect_pack: STBRP_HEURISTIC_Skyline_BF_sortHeight	

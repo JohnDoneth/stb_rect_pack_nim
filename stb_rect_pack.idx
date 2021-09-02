@@ -1,0 +1,6 @@
+Heuristic	stb_rect_pack.html#Heuristic	stb_rect_pack: Heuristic	
+RectPackContext	stb_rect_pack.html#RectPackContext	stb_rect_pack: RectPackContext	
+Rect	stb_rect_pack.html#Rect	stb_rect_pack: Rect	
+newRectPackContext	stb_rect_pack.html#newRectPackContext,int,int,int	stb_rect_pack: newRectPackContext(width, height, nodes: int): ref RectPackContext	
+setHeuristic	stb_rect_pack.html#setHeuristic,ref.RectPackContext,Heuristic	stb_rect_pack: setHeuristic(context: ref RectPackContext; heuristic: Heuristic)	
+packRects	stb_rect_pack.html#packRects,ref.RectPackContext,openArray[Rect]	stb_rect_pack: packRects(context: ref RectPackContext; rects: openArray[Rect]): bool	
