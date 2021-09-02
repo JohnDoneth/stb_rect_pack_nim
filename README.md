@@ -1,4 +1,4 @@
-# stb_rect_pack_nim
+# stb_rect_pack_nim [![Nim](https://github.com/JohnDoneth/stb_rect_pack_nim/actions/workflows/nim.yml/badge.svg)](https://github.com/JohnDoneth/stb_rect_pack_nim/actions/workflows/nim.yml)
 
 Simple Nim wrapper for [stb_rect_pack](https://github.com/nothings/stb).
 
