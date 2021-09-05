@@ -1,4 +1,4 @@
-# stb_rect_pack_nim [![Nim](https://github.com/JohnDoneth/stb_rect_pack_nim/actions/workflows/nim.yml/badge.svg)](https://github.com/JohnDoneth/stb_rect_pack_nim/actions/workflows/nim.yml)
+# stb_rect_pack_nim [![Nim](https://github.com/JohnDoneth/stb_rect_pack_nim/actions/workflows/nim.yml/badge.svg)](https://github.com/JohnDoneth/stb_rect_pack_nim/actions/workflows/nim.yml) [![codecov](https://codecov.io/gh/JohnDoneth/stb_rect_pack_nim/branch/main/graph/badge.svg?token=S8LHADHWJ5)](https://codecov.io/gh/JohnDoneth/stb_rect_pack_nim)
 
 Simple Nim wrapper for [stb_rect_pack](https://github.com/nothings/stb).
 
