@@ -26,7 +26,7 @@ jobs:
         run: nimble install coco nimPNG -y
 
       - name: "Generate Coverage"
-        run: coco --target "tests/**/*.nim" --cov '!tests,!nimcache,!**/test_stb_truetype.nim' --compiler="--opt:speed -d:debug --verbosity:0 --hints:off --lineDir:on"
+        run: coco --target "tests/**/*.nim" --cov '!tests,!nimcache' --compiler="--opt:speed -d:debug --verbosity:0 --hints:off --lineDir:on"
 
       - uses: codecov/codecov-action@v2
         with:
