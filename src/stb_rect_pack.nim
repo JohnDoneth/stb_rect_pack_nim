@@ -9,12 +9,14 @@ type
     hSkylineBLSortHeight,
     hSkylineBFSortHeight
 
-  RectPackContext* = object
+  RectPackContext* = ref object
     raw: ptr stbrp_context
     nodes: ptr stbrp_node
     node_len: cint
 
   Rect* = object
+    ## This structure retains the original C types to avoid
+    ## a copy for the sake of using Nim integer types.
     id*: cint ## reserved for your use
     width*: cint
     height*: cint
@@ -22,10 +24,17 @@ type
     y*: cint
     was_packed*: bool
 
-proc `=destroy`(context: var RectPackContext) =
-  ## Frees the resources allocated in `newRectPackContext`.
-  dealloc(context.raw)
-  dealloc(context.nodes)
+proc finalizeRectPackContext*(context: RectPackContext) =
+  ## Frees the resources associated with a RectPackContext.
+  ## 
+  ## This is only exposed for testing! You should not need to call this manually.
+  if context.raw != nil:
+    dealloc(context.raw)
+    context.raw = nil
+
+  if context.nodes != nil:
+    dealloc(context.nodes)
+    context.nodes = nil
 
 proc toC(h: Heuristic): cint =
   case h:
@@ -33,7 +42,7 @@ proc toC(h: Heuristic): cint =
     of hSkylineBLSortHeight: STBRP_HEURISTIC_Skyline_BL_sortHeight
     of hSkylineBFSortHeight: STBRP_HEURISTIC_Skyline_BF_sortHeight
 
-proc newRectPackContext*(width, height, nodes: int): ref RectPackContext =
+proc newRectPackContext*(width, height, nodes: int): RectPackContext =
   ##  Initialize a rectangle packer to:
   ##     pack a rectangle that is 'width' by 'height' in dimensions
   ##     using temporary storage provided by the array 'nodes', which is 'num_nodes' long
@@ -45,7 +54,8 @@ proc newRectPackContext*(width, height, nodes: int): ref RectPackContext =
   ##  the call (or calls) finish.
   ##
   ##  Note: to guarantee best results: make sure 'num_nodes' >= 'width'
-  var context = new RectPackContext
+  var context: RectPackContext
+  new(context, finalizeRectPackContext)
   context.raw = cast[ptr stbrp_context](alloc(stbrp_context.sizeof()))
   context.nodes = cast[ptr stbrp_node](alloc(stbrp_node.sizeof() * nodes))
   context.node_len = nodes.cint
@@ -60,13 +70,14 @@ proc newRectPackContext*(width, height, nodes: int): ref RectPackContext =
 
   context
 
-proc setHeuristic*(context: ref RectPackContext, heuristic: Heuristic) =
+proc setHeuristic*(context: RectPackContext, heuristic: Heuristic): RectPackContext =
   ##  Optionally select which packing heuristic the library should use. Different
   ##  heuristics will produce better/worse results for different data sets.
   ##  If you call init again, this will be reset to the default.
   stbrp_setup_heuristic(context.raw, heuristic.toC())
+  context
 
-proc packRects*(context: ref RectPackContext, rects: openArray[Rect]): bool =
+proc packRects*(context: RectPackContext, rects: openArray[Rect]): bool =
   ##  Assign packed locations to rectangles. The rectangles are of type
   ##  'stbrp_rect' defined below, stored in the array 'rects', and there
   ##  are 'num_rects' many of them.
