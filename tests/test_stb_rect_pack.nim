@@ -13,30 +13,15 @@ suite "finalizeRectPackContext":
     test "frees the resources of a RectPackContext":
         finalizeRectPackContext(newRectPackContext(100, 100, 100))
 
+    test "does not double free the resources of a RectPackContext":
+        let context = newRectPackContext(100, 100, 100)
+        finalizeRectPackContext(context)
+        finalizeRectPackContext(context)
+
 suite "setHeuristic":
-    test "sets the heuristic to use by the RectPackContext":
-        discard newRectPackContext(100, 100, 100).setHeuristic(Heuristic.hSkylineDefault)
-
-    test "sets the heuristic to use by the RectPackContext":
-        let context = newRectPackContext(100, 100, 100).setHeuristic(Heuristic.hSkylineBFSortHeight)
-
-        let rects = @[
-            # Try packing an empty rectangle.
-            Rect(
-                width: 0,
-                height: 0,
-                x: 0,
-                y: 0,
-            ), 
-            Rect(
-                width: 50,
-                height: 50,
-                x: 0,
-                y: 0,
-            ),
-        ]
-
-        check context.packRects(rects)
+    test "sets the heuristic to use by the RectPackContext and returns the context":
+        let context = newRectPackContext(100, 100, 100)
+        check context == context.setHeuristic(Heuristic.hSkylineDefault)
 
 suite "packRects":
     test "can be called in succession":
